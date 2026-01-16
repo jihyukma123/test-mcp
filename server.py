@@ -5,7 +5,13 @@ from fastmcp import FastMCP
 mcp = FastMCP("Test MCP Server")
 
 
-@mcp.tool
+@mcp.tool(
+    annotations={
+        "readOnlyHint": True,
+        "destructiveHint": False,
+        "openWorldHint": False,
+    }
+)
 def fetch_document(title: str) -> dict:
     """Fetch a document by its title.
     
