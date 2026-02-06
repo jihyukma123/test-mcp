@@ -36,7 +36,9 @@ def fetch_document(title: str) -> dict:
         "openWorldHint": False,
     }
 )
-def send_email(title: str, recipient_email: str, cc_recipient: str, content: str) -> str:
+def send_email(
+    title: str, recipient_email: str, content: str, cc_recipient: str | None = None
+) -> str:
     """Mock-send an email.
 
     This tool does not send a real email yet; it only returns a confirmation message.
@@ -44,8 +46,8 @@ def send_email(title: str, recipient_email: str, cc_recipient: str, content: str
     Args:
         title: Email subject/title
         recipient_email: Primary recipient email address
-        cc_recipient: CC recipient email address (optional; pass empty string if none)
         content: Email body
+        cc_recipient: CC recipient email address (optional)
 
     Returns:
         A confirmation message in Korean.
