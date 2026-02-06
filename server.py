@@ -29,6 +29,29 @@ def fetch_document(title: str) -> dict:
         "message": "Document fetched successfully (mock data)"
     }
 
+@mcp.tool(
+    annotations={
+        "readOnlyHint": False,
+        "destructiveHint": False,
+        "openWorldHint": False,
+    }
+)
+def send_email(title: str, recipient_email: str, cc_recipient: str, content: str) -> str:
+    """Mock-send an email.
+
+    This tool does not send a real email yet; it only returns a confirmation message.
+
+    Args:
+        title: Email subject/title
+        recipient_email: Primary recipient email address
+        cc_recipient: CC recipient email address (optional; pass empty string if none)
+        content: Email body
+
+    Returns:
+        A confirmation message in Korean.
+    """
+    return f"{recipient_email}에게 아래 내용으로 이메일이 전송되었습니다. {content}"
+
 
 # Create ASGI application for deployment
 app = mcp.http_app(path="/mcp")
